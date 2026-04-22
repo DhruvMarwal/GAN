@@ -119,8 +119,13 @@ For each epoch:
 ### Outputs
 
 1. **Probability distribution of real TF-IDF values** — histogram of real sample feature values.
+> <img width="465" height="378" alt="image" src="https://github.com/user-attachments/assets/7f78f093-8f96-4a64-9522-a4f7029f30b9" />
+
 2. **Distribution of D(x)** — discriminator scores on real samples (should cluster near 1).
+> <img width="463" height="377" alt="image" src="https://github.com/user-attachments/assets/7fc45731-de2f-4e20-bb75-5dd55c53c403" />
+
 3. **Distribution of D(G(z))** — discriminator scores on generated samples (should approach 0.5 at convergence).
+> <img width="482" height="375" alt="image" src="https://github.com/user-attachments/assets/57fe138c-d265-4a00-be00-d6393be777f0" />
 
 ---
 
@@ -178,8 +183,9 @@ Sample classes: T-shirt, Trouser, Pullover, Dress, Coat, Sandal, Shirt, Sneaker,
 #### Generated Images — Epoch 10
 
 At epoch 10, the generator already produces recognisable fashion items — shoes, shirts, dresses, and boots — with visible structural detail, though some noise is still present.
-
-![Generated Images at Epoch 10](epoch10_generated_images.png)
+> <img width="379" height="481" alt="image" src="https://github.com/user-attachments/assets/5710db59-0bfc-4e31-9f7e-febd448b7313" />
+> <img width="365" height="478" alt="image" src="https://github.com/user-attachments/assets/abaeb849-1226-46e4-8f94-3b34af03b660" />
+> <img width="369" height="417" alt="image" src="https://github.com/user-attachments/assets/cc888e94-d59c-4d20-b28c-374ce1ccb57f" />
 
 ---
 
@@ -187,7 +193,7 @@ At epoch 10, the generator already produces recognisable fashion items — shoes
 
 The **Discriminator loss** (blue) decreases and stabilises around ~0.68 (near log(2) ≈ 0.693, the theoretical optimum at equilibrium). The **Generator loss** (red) steadily rises as the discriminator becomes more capable, indicating the adversarial dynamic is functioning correctly.
 
-![GAN Training Loss Curves](gan_loss_curves.png)
+> <img width="828" height="363" alt="image" src="https://github.com/user-attachments/assets/caa156cf-3fb6-44ad-b715-5029364e951d" />
 
 ---
 
@@ -198,7 +204,7 @@ The **Discriminator loss** (blue) decreases and stabilises around ~0.68 (near lo
 - **1 − D(G(z))** (green dashed) rises above 0.5, representing the proportion the discriminator labels as fake.
 - The dotted line marks the **0.5 equilibrium** target.
 
-![Discriminator Outputs](discriminator_outputs.png)
+> <img width="833" height="460" alt="image" src="https://github.com/user-attachments/assets/5ac00f5f-8d57-4260-9bca-1a28f3692fc7" />
 
 ---
 
@@ -213,7 +219,10 @@ This recreates the iconic Figure 1 from the original GAN paper showing how the g
 | (c) Epoch 20 | G catching up | p_g overlaps more with p_data; D flattens |
 | (d) Epoch 31 | Near equilibrium | p_g closely tracks p_data; D(x) ≈ 0.5 everywhere |
 
-![GAN Training Stages Distribution Evolution](goodfellow_distribution_evolution.png)
+> <img width="1487" height="389" alt="image" src="https://github.com/user-attachments/assets/be1574da-476b-4f09-a405-6eafc315715e" />
+
+### Discriminator Probability Distributions After Training
+> <img width="831" height="454" alt="image" src="https://github.com/user-attachments/assets/fb4aecb2-295a-416a-8ebb-f5aaf0c29382" />
 
 ---
 
@@ -282,11 +291,21 @@ HOP_LENGTH  = 256
 ### Outputs
 
 1. **Real mel spectrograms** — 2×5 grid of actual "dog" speech spectrograms.
-2. **Generated spectrograms at epochs 1 and 10** — 2×4 grids showing learning progression.
+> <img width="1315" height="484" alt="image" src="https://github.com/user-attachments/assets/6ea4e19d-17e1-4858-b02d-b1cd62ad7b6b" />
+
+2. **Generated spectrograms at epochs** — 2×4 grids showing learning progression.
+> <img width="996" height="569" alt="image" src="https://github.com/user-attachments/assets/f2cbc22e-cc74-4aa3-9e65-30918ef88db6" />
+> <img width="741" height="416" alt="image" src="https://github.com/user-attachments/assets/7561e451-8c46-471a-9ac7-b81e9e84646c" />
+> <img width="747" height="303" alt="image" src="https://github.com/user-attachments/assets/e634e63e-0fb5-4cbf-896e-98e2b9d8fa6f" />
+
 3. **Loss curves** — D loss and G loss over 20 epochs.
-4. **Discriminator output curves** — D(x) and D(G(z)) over epochs with 0.5 equilibrium line.
-5. **Goodfellow Fig. 1 recreation** — KDE distributions at epochs 1, 5, 10, 20 for the audio GAN.
-6. **BONUS — Audio synthesis:** Generated spectrogram → Griffin-Lim inversion → playable `.wav` file.
+> <img width="747" height="322" alt="image" src="https://github.com/user-attachments/assets/f1e80a2f-8525-4d61-803f-80b67424cccd" />
+
+5. **Discriminator output curves** — D(x) and D(G(z)) over epochs with 0.5 equilibrium line.
+> <img width="752" height="318" alt="image" src="https://github.com/user-attachments/assets/52a7ec43-8984-4ac5-a201-5fb9fe3f08c5" />
+
+7. **Goodfellow Fig. 1 recreation** — KDE distributions at epochs 1, 5, 10, 20 for the audio GAN.
+> <img width="1320" height="348" alt="image" src="https://github.com/user-attachments/assets/646504ff-8645-4a7c-856c-b72c68898a09" />
 
 ```python
 # Bonus: Convert generated spectrogram back to audio
@@ -322,8 +341,3 @@ sf.write('generated_dog.wav', gen_audio, SR)
 
 ---
 
-## References
-
-- Goodfellow, I. et al. (2014). *Generative Adversarial Nets*. NeurIPS. [arXiv:1406.2661](https://arxiv.org/abs/1406.2661)
-- TensorFlow/Keras DCGAN tutorial
-- librosa documentation for audio feature extraction
